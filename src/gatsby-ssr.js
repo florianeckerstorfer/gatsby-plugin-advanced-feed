@@ -3,7 +3,8 @@ import { withPrefix as fallbackWithPrefix, withAssetPrefix } from 'gatsby';
 import { defaultOptions } from './internals';
 
 // TODO: remove for v3
-const withPrefix = withAssetPrefix || fallbackWithPrefix;
+const withPrefix =
+  withAssetPrefix || /* istanbul ignore next */ fallbackWithPrefix;
 
 function shouldCreateLinkInHead(option, pathname) {
   if (option === false) {
@@ -11,7 +12,6 @@ function shouldCreateLinkInHead(option, pathname) {
   } else if (option === true) {
     return true;
   }
-  console.log('match', new RegExp(option).test(pathname));
   return new RegExp(option).test(pathname);
 }
 
@@ -19,7 +19,6 @@ function renderLinksInHead({ pathname, setHeadComponents }, feedOptions) {
   const { createLinkInHead } = { ...defaultOptions, ...feedOptions };
   const output = { ...defaultOptions.output, ...feedOptions.output };
 
-  console.log('renderLinksInHead', pathname, createLinkInHead);
   if (!shouldCreateLinkInHead(createLinkInHead, pathname)) {
     return;
   }
@@ -41,16 +40,12 @@ function renderLinksInHead({ pathname, setHeadComponents }, feedOptions) {
       type="application/rss+xml"
       href={withPrefix(output.rss2)}
     />,
-  ]);
-  setHeadComponents([
     <link
       key={`@fec/gatsby-plugin-feed-atom`}
       rel="alternate"
       type="application/atom+xml"
       href={withPrefix(output.atom)}
     />,
-  ]);
-  setHeadComponents([
     <link
       key={`@fec/gatsby-plugin-feed-json`}
       rel="alternate"
@@ -64,7 +59,8 @@ exports.onRenderBody = ({ pathname, setHeadComponents }, pluginOptions) => {
   if (pluginOptions.feeds && !Array.isArray(pluginOptions.feeds)) {
     throw new Error('@fec/gatsby-plugin-feed `feeds` option must be an array.');
   } else if (!pluginOptions.feeds) {
-    generateFeed({ graphql }, {});
+    renderLinksInHead({ pathname, setHeadComponents }, {});
+    return;
   }
   pluginOptions.feeds.forEach(feedOptions =>
     renderLinksInHead({ pathname, setHeadComponents }, feedOptions)

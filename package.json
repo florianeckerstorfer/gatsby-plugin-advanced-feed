@@ -7,7 +7,13 @@
   "scripts": {
     "build": "babel src --out-dir . --ignore **/__tests__",
     "prepare": "cross-env NODE_ENV=production npm run build",
+    "test": "jest",
     "watch": "babel -w src --out-dir . --ignore **/__tests__"
+  },
+  "jest": {
+    "setupFiles": [
+      "./setupTests.js"
+    ]
   },
   "license": "MIT",
   "homepage": "https://florian.ec/projects/gatsby-plugin-feed",
@@ -34,12 +40,19 @@
   },
   "dependencies": {
     "@babel/runtime": "7.5.5",
-    "feed": "^4.0.0"
+    "feed": "^4.0.0",
+    "gatsby": "^2.13.82",
+    "react": "^16.9.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
     "@babel/core": "7.5.5",
     "babel-eslint": "^10.0.2",
-    "babel-preset-gatsby-package": "0.2.2"
+    "babel-preset-gatsby-package": "0.2.2",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "jest": "^24.9.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.9.0"
   }
 }
