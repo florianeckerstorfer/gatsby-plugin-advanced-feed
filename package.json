@@ -1,0 +1,45 @@
+{
+  "name": "@fec/gatsby-plugin-feed",
+  "version": "1.0.0",
+  "description": "Gatsby plugin that generates RSS 2, Atom and JSON feeds for your site.",
+  "author": "Florian Eckerstorfer <florian@eckerstorfer.net>",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src --out-dir . --ignore **/__tests__",
+    "prepare": "cross-env NODE_ENV=production npm run build",
+    "watch": "babel -w src --out-dir . --ignore **/__tests__"
+  },
+  "license": "MIT",
+  "homepage": "https://florian.ec/projects/gatsby-plugin-feed",
+  "keywords": [
+    "atom",
+    "feed",
+    "gatsby",
+    "gatsby-plugin",
+    "rss",
+    "json feed"
+  ],
+  "bugs": {
+    "url": "https://github.com/florianeckerstorfer/gatsby-plugin-feed/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/florianeckerstorfer/gatsby-plugin-feed.git"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "peerDependencies": {
+    "gatsby": "^2.4.0"
+  },
+  "dependencies": {
+    "@babel/runtime": "7.5.5",
+    "feed": "^4.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "7.5.5",
+    "babel-eslint": "^10.0.2",
+    "babel-preset-gatsby-package": "0.2.2"
+  }
+}
