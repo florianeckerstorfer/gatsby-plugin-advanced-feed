@@ -2,7 +2,7 @@ import React from 'react';
 import { withPrefix as fallbackWithPrefix, withAssetPrefix } from 'gatsby';
 import { defaultOptions } from './internals';
 
-// TODO: remove for v3
+// TODO: remove for Gatsby v3
 const withPrefix =
   withAssetPrefix || /* istanbul ignore next */ fallbackWithPrefix;
 

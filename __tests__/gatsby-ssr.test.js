@@ -18,7 +18,7 @@ describe('onRenderBody', () => {
     ).toThrow();
   });
 
-  it('should render links in head if pluginOptions.feeds is undefined', () => {
+  it('should render links in head with default options if pluginOptions.feeds is undefined', () => {
     onRenderBody({ pathname: '', setHeadComponents }, {});
 
     expect(setHeadComponents).toHaveBeenCalledTimes(1);
@@ -44,6 +44,20 @@ describe('onRenderBody', () => {
     expect(setHeadComponents).toHaveBeenCalledTimes(1);
     const links = setHeadComponents.mock.calls[0][0];
     expect(links.length).toBe(3);
+  });
+
+  it('should render links in head with values from pluginOptions.feeds[].output', () => {
+    const output = {
+      rss2: 'my-rss.xml',
+      atom: 'my-atom.xml',
+      json: 'my-feed.json',
+    };
+    onRenderBody({ pathname: '', setHeadComponents }, { feeds: [{ output }] });
+
+    const links = setHeadComponents.mock.calls[0][0];
+    expect(shallow(links[0]).prop('href')).toBe('/my-rss.xml');
+    expect(shallow(links[1]).prop('href')).toBe('/my-atom.xml');
+    expect(shallow(links[2]).prop('href')).toBe('/my-feed.json');
   });
 
   it('should not prepend slash if pluginOptions.feeds[].output already contains slash', () => {
