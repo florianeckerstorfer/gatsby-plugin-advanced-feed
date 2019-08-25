@@ -29,14 +29,15 @@ Next you need add the plugin to the `plugins` list in `gatsby-config.js`:
 module.exports = {
   // ...
   plugins: [
-      // ...
-      'gatsby-plugin-feed',
+    // ...
+    'gatsby-plugin-feed',
   ],
+};
 ```
 
 ## Configuration
 
-You can configure @fec/gatsby-plugin-feed:
+You can configure `@fec/gatsby-plugin-feed`:
 
 ```javascript
 // ./gatsby-config.js
@@ -49,7 +50,7 @@ module.exports = {
     options: {
       feeds: [
         {
-          createLinkInHead: true,
+          createLinkInHead: true, // `true` for all pages or regular expression to match pathnames
           author: undefined,      // default: site.siteMetadata.author
           copyright: undefined,   // default: "All rights reserved {year}, {site.siteMetadata.author}"
           description: undefined, // default: site.siteMetadata.description
@@ -68,6 +69,30 @@ module.exports = {
       ],
     },
   ],
+};
 ```
 
+### Include <link> only in certain pages
+
+`@fec/gatsby-plugin-feed` allows you to link the feeds in the `<head>` or your page. This can be configured on a per-feed basis. If the option `createLinkInHead` for a feed is `true` the `<link>` will be included on all pages. You can include the `<link>` only for a certain pages by specifying a regular expression.
+
+In the following example the `<link>` tags will only be inserted on all pages which `pathname` matches the regular expression `/^\/blog/`:
+
+```javascript
+// ./gatsby-config.js
+module.exports = {
+  // ...
+  plugins: [
+    // ...
+    {
+      resolve:'gatsby-plugin-feed',
+      options: {
+        feeds: [
+          createLinkInHead: /^\/blog/,
+        ]
+      }
+    }
+  ],
+};
+```
 
