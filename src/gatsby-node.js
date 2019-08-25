@@ -5,7 +5,7 @@ import { defaultOptions } from './internals';
 
 const undefIfFalse = value => (value !== false ? value : undefined);
 
-function addItemToPage(feed, siteMetadata, options) {
+function addItemToFeed(feed, siteMetadata, options) {
   return page => {
     feed.addItem({
       title: page.frontmatter.title,
@@ -48,7 +48,7 @@ function buildFeed(pages, siteMetadata, options, output) {
 
   pages
     .map(page => page.node)
-    .forEach(addItemToPage(feed, siteMetadata, options));
+    .forEach(addItemToFeed(feed, siteMetadata, options));
 
   feed.addContributor({
     name: siteMetadata.author,
