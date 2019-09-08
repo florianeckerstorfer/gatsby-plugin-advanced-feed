@@ -43,6 +43,7 @@ function buildFeed(pages, siteMetadata, options, output) {
     author: {
       name: options.author || siteMetadata.author,
       email: undefIfFalse(options.email || siteMetadata.email),
+      link: siteMetadata.siteUrl,
     },
   });
 
@@ -124,6 +125,7 @@ exports.onPostBuild = async ({ graphql }, pluginOptions) => {
     throw new Error('@fec/gatsby-plugin-feed `feeds` option must be an array.');
   } else if (!pluginOptions.feeds) {
     await generateFeed({ graphql }, {});
+    return;
   }
   for (let i = 0; i < pluginOptions.feeds.length; i += 1) {
     await generateFeed({ graphql }, pluginOptions.feeds[i]);
