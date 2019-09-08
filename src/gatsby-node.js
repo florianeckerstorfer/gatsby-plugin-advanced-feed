@@ -3,7 +3,8 @@ import { Feed } from 'feed';
 import dayjs from 'dayjs';
 import { defaultOptions } from './internals';
 
-const undefIfFalse = value => (value !== false ? value : undefined);
+const undefIfFalse = (condition, value) =>
+  condition !== false ? value : undefined;
 
 function addItemToFeed(feed, siteMetadata, options) {
   return page => {
@@ -16,7 +17,10 @@ function addItemToFeed(feed, siteMetadata, options) {
       author: [
         {
           name: options.author || siteMetadata.author,
-          email: undefIfFalse(options.email || siteMetadata.email),
+          email: undefIfFalse(
+            options.email,
+            options.email || siteMetadata.email
+          ),
           link: options.link || siteMetadata.siteUrl,
         },
       ],
@@ -42,7 +46,7 @@ function buildFeed(pages, siteMetadata, options, output) {
     },
     author: {
       name: options.author || siteMetadata.author,
-      email: undefIfFalse(options.email || siteMetadata.email),
+      email: undefIfFalse(options.email, options.email || siteMetadata.email),
       link: siteMetadata.siteUrl,
     },
   });

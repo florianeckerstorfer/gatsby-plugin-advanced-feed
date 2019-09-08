@@ -96,8 +96,9 @@ describe('onPostBuild()', () => {
         `${siteMetadata.siteUrl}/feed.json`
       );
       expect(feedMock.mock.calls[0][0].author.name).toBe(siteMetadata.author);
-      expect(feedMock.mock.calls[0][0].author.email).toBe(siteMetadata.email);
       expect(feedMock.mock.calls[0][0].author.link).toBe(siteMetadata.siteUrl);
+      // By default, email address should be undefined
+      expect(feedMock.mock.calls[0][0].author.email).toBeUndefined();
     });
 
     it('should initiate `Feed` with valid options', async () => {
@@ -118,8 +119,9 @@ describe('onPostBuild()', () => {
       expect(feedMock.mock.calls[0][0].description).toBe(options.description);
       expect(feedMock.mock.calls[0][0].copyright).toBe(options.copyright);
       expect(feedMock.mock.calls[0][0].author.name).toBe(options.author);
-      expect(feedMock.mock.calls[0][0].author.email).toBe(siteMetadata.email);
       expect(feedMock.mock.calls[0][0].author.link).toBe(siteMetadata.siteUrl);
+      // By default, email address should not be rendered
+      expect(feedMock.mock.calls[0][0].author.email).toBeUndefined();
     });
 
     it('should add items to feed', async () => {
@@ -150,12 +152,11 @@ describe('onPostBuild()', () => {
       expect(addItemMock.mock.calls[0][0].author[0].name).toBe(
         siteMetadata.author
       );
-      expect(addItemMock.mock.calls[0][0].author[0].email).toBe(
-        siteMetadata.email
-      );
       expect(addItemMock.mock.calls[0][0].author[0].link).toBe(
         siteMetadata.siteUrl
       );
+      // By default, email address should not be rendered
+      expect(addItemMock.mock.calls[0][0].author[0].email).toBeUndefined();
     });
 
     it('should not render email address if `false`', async () => {
@@ -166,17 +167,46 @@ describe('onPostBuild()', () => {
         rss2: jest.fn(),
         json1: jest.fn(),
       }));
-      graphql.mockImplementation(() => ({
-        data: {
-          allMarkdownRemark: { edges },
-          site: { siteMetadata: { ...siteMetadata, email: false } },
-        },
-      }));
 
-      await onPostBuild({ graphql }, {});
+      const options = { email: false };
+      await onPostBuild({ graphql }, { feeds: [options] });
 
       expect(feedMock.mock.calls[0][0].author.email).toBeUndefined();
       expect(addItemMock.mock.calls[0][0].author[0].email).toBeUndefined();
+    });
+
+    it('should render email address given in options', async () => {
+      feedMock.mockImplementation(() => ({
+        addContributor: addContributorMock,
+        addItem: addItemMock,
+        atom1: jest.fn(),
+        rss2: jest.fn(),
+        json1: jest.fn(),
+      }));
+
+      const options = { email: 'foo@example.com' };
+      await onPostBuild({ graphql }, { feeds: [options] });
+
+      expect(feedMock.mock.calls[0][0].author.email).toBe(options.email);
+      expect(addItemMock.mock.calls[0][0].author[0].email).toBe(options.email);
+    });
+
+    it('should render email address from `siteMetadata` if undefined', async () => {
+      feedMock.mockImplementation(() => ({
+        addContributor: addContributorMock,
+        addItem: addItemMock,
+        atom1: jest.fn(),
+        rss2: jest.fn(),
+        json1: jest.fn(),
+      }));
+
+      const options = { email: undefined };
+      await onPostBuild({ graphql }, { feeds: [options] });
+
+      expect(feedMock.mock.calls[0][0].author.email).toBe(siteMetadata.email);
+      expect(addItemMock.mock.calls[0][0].author[0].email).toBe(
+        siteMetadata.email
+      );
     });
 
     it('should generate Atom feed', async () => {
