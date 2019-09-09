@@ -2,6 +2,8 @@
 
 > Gatsby plugin that generates RSS 2, Atom and JSON feeds for your site.
 
+![](https://github.com/florianeckerstorfer/gatsby-plugin-advanced-feed/workflows/tests/badge.svg)
+
 ## Features
 
 - Generates RSS 2.0, Atom 1.0 and JSON Feed 1.0
