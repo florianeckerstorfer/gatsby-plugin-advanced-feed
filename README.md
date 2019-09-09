@@ -4,9 +4,13 @@
 
 ![](https://github.com/florianeckerstorfer/gatsby-plugin-advanced-feed/workflows/Tests/badge.svg)
 
+👨‍💻 Made in 🎡 Vienna, Europe by [Florian Eckerstorfer](https://florianeckerstorfer.com)
+
 ## Features
 
-- Generates RSS 2.0, Atom 1.0 and JSON Feed 1.0
+- Generates RSS 2.0
+- Generates Atom 1.0
+- Generates JSON Feed 1.0
 - Supports multiple feeds
 
 ## Differences to [gatsby-plugin-feed](https://www.npmjs.com/package/gatsby-plugin-feed)
@@ -37,9 +41,11 @@ module.exports = {
 };
 ```
 
+> ⚠️ Feeds are only generated on `gatsby build`, when running the local development server (`gatsby develop`) no feeds will be generated.
+
 ## Configuration
 
-You can configure `@fec/gatsby-plugin-advanced-feed`:
+You can configure `@fec/gatsby-plugin-advanced-feed`. The following example contains all configuration options and their default value:
 
 ```javascript
 // ./gatsby-config.js
@@ -52,7 +58,7 @@ module.exports = {
     options: {
       feeds: [
         {
-          createLinkInHead: true, // `true` for all pages or regular expression to match pathnames
+          // Configure the feed; smart defaults are choosen if not set
           author: undefined,      // default: site.siteMetadata.author
           copyright: undefined,   // default: "All rights reserved {year}, {site.siteMetadata.author}"
           description: undefined, // default: site.siteMetadata.description
@@ -60,8 +66,17 @@ module.exports = {
           id: undefined,          // default: site.siteMetadata.siteUrl
           link: undefined,        // default: site.siteMetadata.siteUrl
           title: undefined,       // default: site.siteMetadata.title
+
+          // Add <link> tags in <head> to feeds
+          createLinkInHead: true, // `true` for all pages or regular expression to match pathnames
+
+          // Number of articles to include in feed
           limit: 10,
+
+          // Include all pages which `fileAbsolutePath` matches this regular expression
           match: '^/blog/',
+
+          // File names of generated feeds
           output: {
             rss2: 'rss.xml',
             atom: 'atom.xml',
@@ -76,7 +91,7 @@ module.exports = {
 
 ### Include <link> only in certain pages
 
-`@fec/gatsby-plugin-advanced-feed` allows you to link the feeds in the `<head>` or your page. This can be configured on a per-feed basis. If the option `createLinkInHead` for a feed is `true` the `<link>` will be included on all pages. You can include the `<link>` only for a certain pages by specifying a regular expression.
+`@fec/gatsby-plugin-advanced-feed` allows you to link the feeds in the `<head>` or your page. This can be configured on a per-feed basis. If the option `createLinkInHead` for a feed is `true` the `<link>` will be included on all pages. You can include the `<link>` only for certain pages by specifying a regular expression.
 
 In the following example the `<link>` tags will only be inserted on all pages which `pathname` matches the regular expression `/^\/blog/`:
 
@@ -97,4 +112,10 @@ module.exports = {
   ],
 };
 ```
+
+## Changelog
+
+### Version 1.0.0 (9 September 2019)
+
+- Initial release
 
