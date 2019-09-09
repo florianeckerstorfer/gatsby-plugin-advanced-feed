@@ -1,5 +1,5 @@
 {
-  "name": "@florianeckerstorfer/gatsby-plugin-advanced-feed",
+  "name": "@fec/gatsby-plugin-advanced-feed",
   "version": "1.0.0",
   "description": "Gatsby plugin that generates RSS 2, Atom and JSON feeds for your site.",
   "author": "Florian Eckerstorfer <florian@eckerstorfer.net>",
@@ -16,6 +16,7 @@
       "./setupTests.js"
     ]
   },
+  "private": false,
   "license": "MIT",
   "homepage": "https://florian.ec/projects/gatsby-plugin-advanced-feed",
   "keywords": [
@@ -27,7 +28,7 @@
     "json feed"
   ],
   "bugs": {
-    "url": "https://github.com/florianeckerstorfer/gatsby-plugin-advanced-feed/issues"
+    "url": "https://github.com/fec/gatsby-plugin-advanced-feed/issues"
   },
   "repository": {
     "type": "git",

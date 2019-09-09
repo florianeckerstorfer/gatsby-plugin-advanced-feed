@@ -1,4 +1,4 @@
-# @florianeckerstorfer/gatsby-plugin-advanced-feed
+# @fec/gatsby-plugin-advanced-feed
 
 > Gatsby plugin that generates RSS 2, Atom and JSON feeds for your site.
 
@@ -24,8 +24,8 @@
 First you need to install the plugin with NPM or Yarn:
 
 ```shell
-npm install @florianeckerstorfer/gatsby-plugin-advanced-feed --save
-yarn add @florianeckerstorfer/gatsby-plugin-advanced-feed
+npm install @fec/gatsby-plugin-advanced-feed --save
+yarn add @fec/gatsby-plugin-advanced-feed
 ```
 
 Next you need add the plugin to the `plugins` list in `gatsby-config.js`:
@@ -45,7 +45,7 @@ module.exports = {
 
 ## Configuration
 
-You can configure `@florianeckerstorfer/gatsby-plugin-advanced-feed`. The following example contains all configuration options and their default value:
+You can configure `@fec/gatsby-plugin-advanced-feed`. The following example contains all configuration options and their default value:
 
 ```javascript
 // ./gatsby-config.js
@@ -91,7 +91,7 @@ module.exports = {
 
 ### Include <link> only in certain pages
 
-`@florianeckerstorfer/gatsby-plugin-advanced-feed` allows you to link the feeds in the `<head>` or your page. This can be configured on a per-feed basis. If the option `createLinkInHead` for a feed is `true` the `<link>` will be included on all pages. You can include the `<link>` only for certain pages by specifying a regular expression.
+`@fec/gatsby-plugin-advanced-feed` allows you to link the feeds in the `<head>` or your page. This can be configured on a per-feed basis. If the option `createLinkInHead` for a feed is `true` the `<link>` will be included on all pages. You can include the `<link>` only for certain pages by specifying a regular expression.
 
 In the following example the `<link>` tags will only be inserted on all pages which `pathname` matches the regular expression `/^\/blog/`:
 
