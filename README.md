@@ -1,4 +1,4 @@
-# @fec/gatsby-plugin-feed
+# @fec/gatsby-plugin-advanced-feed
 
 > Gatsby plugin that generates RSS 2, Atom and JSON feeds for your site.
 
@@ -18,8 +18,8 @@
 First you need to install the plugin with NPM or Yarn:
 
 ```shell
-npm install @fec/gatsby-plugin-feed --save
-yarn add @fec/gatsby-plugin-feed
+npm install @fec/gatsby-plugin-advanced-feed --save
+yarn add @fec/gatsby-plugin-advanced-feed
 ```
 
 Next you need add the plugin to the `plugins` list in `gatsby-config.js`:
@@ -30,14 +30,14 @@ module.exports = {
   // ...
   plugins: [
     // ...
-    'gatsby-plugin-feed',
+    'gatsby-plugin-advanced-feed',
   ],
 };
 ```
 
 ## Configuration
 
-You can configure `@fec/gatsby-plugin-feed`:
+You can configure `@fec/gatsby-plugin-advanced-feed`:
 
 ```javascript
 // ./gatsby-config.js
@@ -46,7 +46,7 @@ module.exports = {
   plugins: [
     // ...
     {
-    resolve: 'gatsby-plugin-feed',
+    resolve: 'gatsby-plugin-advanced-feed',
     options: {
       feeds: [
         {
@@ -74,7 +74,7 @@ module.exports = {
 
 ### Include <link> only in certain pages
 
-`@fec/gatsby-plugin-feed` allows you to link the feeds in the `<head>` or your page. This can be configured on a per-feed basis. If the option `createLinkInHead` for a feed is `true` the `<link>` will be included on all pages. You can include the `<link>` only for a certain pages by specifying a regular expression.
+`@fec/gatsby-plugin-advanced-feed` allows you to link the feeds in the `<head>` or your page. This can be configured on a per-feed basis. If the option `createLinkInHead` for a feed is `true` the `<link>` will be included on all pages. You can include the `<link>` only for a certain pages by specifying a regular expression.
 
 In the following example the `<link>` tags will only be inserted on all pages which `pathname` matches the regular expression `/^\/blog/`:
 
@@ -85,7 +85,7 @@ module.exports = {
   plugins: [
     // ...
     {
-      resolve:'gatsby-plugin-feed',
+      resolve:'gatsby-plugin-advanced-feed',
       options: {
         feeds: [
           createLinkInHead: /^\/blog/,
