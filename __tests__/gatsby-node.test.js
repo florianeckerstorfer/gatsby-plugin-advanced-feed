@@ -1,9 +1,13 @@
+// In order to be able to correctly mock everything,
+// we can't use `import` here, dependencies are required
+// in the global `beforeEach()`
 let fs;
 let feed;
 let onPostBuild;
 
 jest.mock('fs');
 
+// Fixtures
 const siteMetadata = {
   author: 'Foo Bar',
   description: 'My description',
@@ -65,6 +69,8 @@ describe('onPostBuild()', () => {
     beforeEach(() => {
       addContributorMock = jest.fn();
       addItemMock = jest.fn();
+      // Mock constructor, we'll only overwride `addContributor()`
+      // and `addItem()` in tests that require it
       feedMock = jest.spyOn(feed, 'Feed');
 
       graphql.mockImplementation(() => ({
@@ -98,6 +104,8 @@ describe('onPostBuild()', () => {
       expect(feedMock.mock.calls[0][0].author.name).toBe(siteMetadata.author);
       expect(feedMock.mock.calls[0][0].author.link).toBe(siteMetadata.siteUrl);
       // By default, email address should be undefined
+      // This ensures that authors don't accidentally publish their
+      // email address in the feed
       expect(feedMock.mock.calls[0][0].author.email).toBeUndefined();
     });
 
@@ -120,7 +128,7 @@ describe('onPostBuild()', () => {
       expect(feedMock.mock.calls[0][0].copyright).toBe(options.copyright);
       expect(feedMock.mock.calls[0][0].author.name).toBe(options.author);
       expect(feedMock.mock.calls[0][0].author.link).toBe(siteMetadata.siteUrl);
-      // By default, email address should not be rendered
+      // By default, email address should be undefined
       expect(feedMock.mock.calls[0][0].author.email).toBeUndefined();
     });
 
@@ -155,7 +163,7 @@ describe('onPostBuild()', () => {
       expect(addItemMock.mock.calls[0][0].author[0].link).toBe(
         siteMetadata.siteUrl
       );
-      // By default, email address should not be rendered
+      // By default, email address should be undefined
       expect(addItemMock.mock.calls[0][0].author[0].email).toBeUndefined();
     });
 
