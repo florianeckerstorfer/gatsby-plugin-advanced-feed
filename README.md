@@ -36,7 +36,7 @@ module.exports = {
   // ...
   plugins: [
     // ...
-    'gatsby-plugin-advanced-feed',
+    '@fec/gatsby-plugin-advanced-feed',
   ],
 };
 ```
@@ -54,7 +54,7 @@ module.exports = {
   plugins: [
     // ...
     {
-    resolve: 'gatsby-plugin-advanced-feed',
+    resolve: '@fec/gatsby-plugin-advanced-feed',
     options: {
       feeds: [
         {
@@ -102,7 +102,7 @@ module.exports = {
   plugins: [
     // ...
     {
-      resolve:'gatsby-plugin-advanced-feed',
+      resolve: '@fec/gatsby-plugin-advanced-feed',
       options: {
         feeds: [
           createLinkInHead: /^\/blog/,
