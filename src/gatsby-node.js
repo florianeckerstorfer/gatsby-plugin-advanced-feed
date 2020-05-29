@@ -17,7 +17,7 @@ function addItemToFeed(feed, siteMetadata, options) {
       author: [
         {
           name: options.author || siteMetadata.author.name,
-          email: undefIfFalse(options.email),
+          email: undefIfFalse(options.email, options.email),
           link: options.link || siteMetadata.siteUrl,
         },
       ],
@@ -43,7 +43,7 @@ function buildFeed(pages, siteMetadata, options, output) {
     },
     author: {
       name: options.author || siteMetadata.author.name,
-      email: undefIfFalse(options.email),
+      email: undefIfFalse(options.email, options.email),
       link: siteMetadata.siteUrl,
     },
   });
