@@ -31,3 +31,7 @@ src
 flow-typed
 decls
 examples
+
+/gatsby-integration-test
+/scripts/storage
+/scripts/htpasswd

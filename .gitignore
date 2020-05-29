@@ -1,5 +1,5 @@
-scripts/storage
-scripts/htpasswd
+/scripts/storage
+/scripts/htpasswd
 
 # Dependencies
 /node_modules
