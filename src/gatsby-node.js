@@ -16,11 +16,8 @@ function addItemToFeed(feed, siteMetadata, options) {
       content: page.html,
       author: [
         {
-          name: options.author || siteMetadata.author,
-          email: undefIfFalse(
-            options.email,
-            options.email || siteMetadata.email
-          ),
+          name: options.author || siteMetadata.author.name,
+          email: undefIfFalse(options.email, options.email),
           link: options.link || siteMetadata.siteUrl,
         },
       ],
@@ -37,7 +34,7 @@ function buildFeed(pages, siteMetadata, options, output) {
     copyright:
       options.copyright ||
       `All rights reserved ${new Date().getUTCFullYear()}, ${
-        siteMetadata.author
+        options.author || siteMetadata.author.name
       }`,
     feedLinks: {
       atom: `${siteMetadata.siteUrl}/${output.atom}`,
@@ -45,8 +42,8 @@ function buildFeed(pages, siteMetadata, options, output) {
       json: `${siteMetadata.siteUrl}/${output.json}`,
     },
     author: {
-      name: options.author || siteMetadata.author,
-      email: undefIfFalse(options.email, options.email || siteMetadata.email),
+      name: options.author || siteMetadata.author.name,
+      email: undefIfFalse(options.email, options.email),
       link: siteMetadata.siteUrl,
     },
   });
@@ -56,8 +53,8 @@ function buildFeed(pages, siteMetadata, options, output) {
     .forEach(addItemToFeed(feed, siteMetadata, options));
 
   feed.addContributor({
-    name: siteMetadata.author,
-    email: siteMetadata.email,
+    name: siteMetadata.author.name,
+    email: options.email,
     link: siteMetadata.siteUrl,
   });
 
@@ -86,8 +83,7 @@ async function generateFeed({ graphql }, feedOptions) {
         siteMetadata {
           title
           description
-          author
-          email
+          author { name }
           siteUrl
         }
       }
