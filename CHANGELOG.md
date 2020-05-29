@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 1.1.1 (29 September 2020)
+
+- Fixed release 1.1.0
+
 ## Version 1.1.0 (29 September 2020)
 
 - CI: Add integration test
