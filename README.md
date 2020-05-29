@@ -2,9 +2,20 @@
 
 > Gatsby plugin that generates RSS 2, Atom and JSON feeds for your site.
 
-![](https://github.com/florianeckerstorfer/gatsby-plugin-advanced-feed/workflows/Tests/badge.svg)
+![Unit tests](https://github.com/florianeckerstorfer/gatsby-plugin-advanced-feed/workflows/Unit%20tests/badge.svg)
+![Integration tests](https://github.com/florianeckerstorfer/gatsby-plugin-advanced-feed/workflows/Integration%20tests/badge.svg)
 
-👨‍💻 Made in 🎡 Vienna, Europe by [Florian Eckerstorfer](https://florianeckerstorfer.com)
+Made by 👨‍💻 [Florian Eckerstorfer](https://florianeckerstorfer.com) in 🎡 Vienna, Europe.
+
+## Table of Contents
+
+1. [Features](#features)
+1. [Differences to gatsby-plugin-feed](#differences-to-gatsby-plugin-feed)
+1. [Installation & Setup](#installation--setup)
+1. [Configuration](#configuration)
+1. [Code of Conduct](#code-of-conduct)
+1. [Changelog](#changelog)
+1. [License](#license)
 
 ## Features
 
@@ -113,9 +124,14 @@ module.exports = {
 };
 ```
 
+## Code of Conduct
+
+See [CODE_OF_CONDUCT](CODE_OF_CONDUCT.md)
+
 ## Changelog
 
-### Version 1.0.0 (9 September 2019)
+See [CHANGELOG](CHANGELOG.md)
 
-- Initial release
+## License
 
+See [LICENSE](LICENSE.md)
