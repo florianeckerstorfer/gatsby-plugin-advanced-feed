@@ -1,9 +1,13 @@
+scripts/storage
+scripts/htpasswd
+
 # Dependencies
 /node_modules
 /package-lock.json
 
 # Code coverage (Istanbul)
 /coverage
+/gatsby-integration-test
 
 /*.js
 !index.js
