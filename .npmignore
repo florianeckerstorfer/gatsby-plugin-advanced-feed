@@ -31,6 +31,3 @@ src
 flow-typed
 decls
 examples
-
-/scripts/storage
-/scripts/htpasswd
