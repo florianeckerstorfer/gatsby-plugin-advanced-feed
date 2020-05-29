@@ -9,9 +9,8 @@ jest.mock('fs');
 
 // Fixtures
 const siteMetadata = {
-  author: 'Foo Bar',
+  author: { name: 'Foo Bar' },
   description: 'My description',
-  email: 'foo@example.com',
   siteUrl: 'https://example.com',
   title: 'My Feed',
 };
@@ -89,7 +88,7 @@ describe('onPostBuild()', () => {
         siteMetadata.description
       );
       const copyright = `All rights reserved ${new Date().getUTCFullYear()}, ${
-        siteMetadata.author
+        siteMetadata.author.name
       }`;
       expect(feedMock.mock.calls[0][0].copyright).toBe(copyright);
       expect(feedMock.mock.calls[0][0].feedLinks.atom).toBe(
@@ -101,7 +100,7 @@ describe('onPostBuild()', () => {
       expect(feedMock.mock.calls[0][0].feedLinks.json).toBe(
         `${siteMetadata.siteUrl}/feed.json`
       );
-      expect(feedMock.mock.calls[0][0].author.name).toBe(siteMetadata.author);
+      expect(feedMock.mock.calls[0][0].author.name).toBe(siteMetadata.author.name);
       expect(feedMock.mock.calls[0][0].author.link).toBe(siteMetadata.siteUrl);
       // By default, email address should be undefined
       // This ensures that authors don't accidentally publish their
@@ -113,7 +112,7 @@ describe('onPostBuild()', () => {
       const options = {
         title: 'Custom title',
         link: 'https://example.org',
-        author: 'Custom author',
+        author: { name: 'Custom author' },
         copyright: 'Custom copyright',
         description: 'Custom description',
         id: 'custom id',
@@ -158,7 +157,7 @@ describe('onPostBuild()', () => {
       );
       expect(addItemMock.mock.calls[0][0].content).toBe(edges[0].node.html);
       expect(addItemMock.mock.calls[0][0].author[0].name).toBe(
-        siteMetadata.author
+        siteMetadata.author.name
       );
       expect(addItemMock.mock.calls[0][0].author[0].link).toBe(
         siteMetadata.siteUrl

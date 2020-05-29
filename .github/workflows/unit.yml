@@ -1,14 +1,14 @@
-name: Tests
+name: Unit tests
 
 on: [push]
 
 jobs:
-  build:
+  test_unit:
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [8.x, 10.x, 12.x]
+        node-version: [10.x, 12.x, 14.x]
 
     steps:
     - uses: actions/checkout@v1
@@ -16,9 +16,9 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: npm install, and test
-      run: |
-        npm install
-        npm test
+    - name: Install dependencies
+      run: npm install
+    - name: Run tests
+      run: npm test
       env:
         CI: true
