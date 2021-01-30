@@ -2,12 +2,13 @@ import fs from 'fs';
 import { Feed } from 'feed';
 import dayjs from 'dayjs';
 import { defaultOptions } from './internals';
+import { addLeadingSlash } from './util';
 
 const undefIfFalse = (condition, value) =>
   condition !== false ? value : undefined;
 
 function addItemToFeed(feed, siteMetadata, options) {
-  return page => {
+  return (page) => {
     feed.addItem({
       title: page.frontmatter.title,
       id: `${siteMetadata.siteUrl}${page.fields.slug}`,
@@ -37,9 +38,9 @@ function buildFeed(pages, siteMetadata, options, output) {
         options.author || siteMetadata.author.name
       }`,
     feedLinks: {
-      atom: `${siteMetadata.siteUrl}/${output.atom}`,
-      rss2: `${siteMetadata.siteUrl}/${output.rss2}`,
-      json: `${siteMetadata.siteUrl}/${output.json}`,
+      atom: `${siteMetadata.siteUrl}${addLeadingSlash(output.atom)}`,
+      rss2: `${siteMetadata.siteUrl}${addLeadingSlash(output.rss2)}`,
+      json: `${siteMetadata.siteUrl}${addLeadingSlash(output.json)}`,
     },
     author: {
       name: options.author || siteMetadata.author.name,
@@ -49,7 +50,7 @@ function buildFeed(pages, siteMetadata, options, output) {
   });
 
   pages
-    .map(page => page.node)
+    .map((page) => page.node)
     .forEach(addItemToFeed(feed, siteMetadata, options));
 
   feed.addContributor({

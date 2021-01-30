@@ -1,0 +1,10 @@
+{
+  "actions" : {
+    "run" : {
+      "enabled" : true,
+      "script" : "#!\/usr\/local\/bin\/fish\nnpm run build"
+    }
+  },
+  "identifier" : "9C836701-BE43-49A1-A0A8-C0CBB9A3F558",
+  "openLogOnRun" : "fail"
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { withPrefix as fallbackWithPrefix, withAssetPrefix } from 'gatsby';
 import { defaultOptions } from './internals';
+import { addLeadingSlash } from './util';
 
 // TODO: remove for Gatsby v3
 const withPrefix =
@@ -23,15 +24,9 @@ function renderLinksInHead({ pathname, setHeadComponents }, feedOptions) {
     return;
   }
 
-  if (output.rss2.charAt(0) !== `/`) {
-    output.rss2 = `/${output.rss2}`;
-  }
-  if (output.atom.charAt(0) !== '/') {
-    output.atom = `/${output.atom}`;
-  }
-  if (output.json.charAt(0) !== '/') {
-    output.json = `/${output.json}`;
-  }
+  output.rss2 = addLeadingSlash(output.rss2);
+  output.atom = addLeadingSlash(output.atom);
+  output.json = addLeadingSlash(output.json);
 
   setHeadComponents([
     <link
@@ -62,7 +57,7 @@ exports.onRenderBody = ({ pathname, setHeadComponents }, pluginOptions) => {
     renderLinksInHead({ pathname, setHeadComponents }, {});
     return;
   }
-  pluginOptions.feeds.forEach(feedOptions =>
+  pluginOptions.feeds.forEach((feedOptions) =>
     renderLinksInHead({ pathname, setHeadComponents }, feedOptions)
   );
 };
