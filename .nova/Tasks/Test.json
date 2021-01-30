@@ -1,0 +1,10 @@
+{
+  "actions" : {
+    "run" : {
+      "enabled" : true,
+      "script" : "#!\/usr\/local\/bin\/fish\nnpm test"
+    }
+  },
+  "identifier" : "423AAB15-EA86-4361-ADFB-EE7CAFCDB04C",
+  "openLogOnRun" : "start"
+}
