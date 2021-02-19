@@ -42,7 +42,7 @@
     "gatsby": "^2.4.0"
   },
   "dependencies": {
-    "@babel/runtime": "7.12.13",
+    "@babel/runtime": "7.12.18",
     "dayjs": "^1.8.16",
     "feed": "^4.0.0",
     "gatsby": "^2.31.1",
