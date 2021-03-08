@@ -14,7 +14,7 @@ Made by 👨‍💻 [Florian Eckerstorfer](https://florianeckerstorfer.com) in �
 1. [Installation & Setup](#installation--setup)
 1. [Configuration](#configuration)
 1. [Code of Conduct](#code-of-conduct)
-1. [Changelog](#changelog)
+1. [Change log](#change-log)
 1. [License](#license)
 
 ## Features
@@ -38,6 +38,8 @@ First you need to install the plugin with NPM or Yarn:
 npm install @fec/gatsby-plugin-advanced-feed --save
 yarn add @fec/gatsby-plugin-advanced-feed
 ```
+
+Versions 2.x of this plugin are tested with Gatsby v3, you might need to use `@fec/gatsby-plugin-advanced-feed@1` if you are still using Gatsby v2.
 
 Next you need add the plugin to the `plugins` list in `gatsby-config.js`:
 
@@ -128,7 +130,7 @@ module.exports = {
 
 See [CODE_OF_CONDUCT](CODE_OF_CONDUCT.md)
 
-## Changelog
+## Change log
 
 See [CHANGELOG](CHANGELOG.md)
 

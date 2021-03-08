@@ -1,4 +1,9 @@
-# Changelog
+# Change log
+
+## Version 2.0.0 (8 March 2021)
+
+- Update dependencies for Gatsby v3 compatibility
+- Bump minimum version of Node to `>12.x`
 
 ## Version 1.2.0 (30 Janauary 2021)
 
