@@ -43,7 +43,7 @@
     "dayjs": "^1.8.16",
     "feed": "^4.0.0",
     "gatsby": "^3.0.3",
-    "react": "^16.9.0"
+    "react": "^17.0.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
@@ -54,7 +54,7 @@
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "jest": "^26.0.1",
-    "react": "^16.8.6",
+    "react": "^17.0.1",
     "react-dom": "^16.9.0"
   }
 }
