@@ -42,7 +42,7 @@
     "@babel/runtime": "7.15.4",
     "dayjs": "^1.8.16",
     "feed": "^4.0.0",
-    "gatsby": "^3.0.3",
+    "gatsby": "^4.0.1",
     "react": "^16.9.0"
   },
   "devDependencies": {
