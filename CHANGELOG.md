@@ -1,5 +1,10 @@
 # Change log
 
+## Version 3.0.0 (1 November 2021)
+
+- Update to Gatsby v4
+- Bump minimum version of Node to `>=14`
+
 ## Version 2.0.0 (8 March 2021)
 
 - Update dependencies for Gatsby v3 compatibility
