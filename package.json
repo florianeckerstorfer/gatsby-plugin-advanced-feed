@@ -40,8 +40,8 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.16.0",
-    "dayjs": "^1.8.16",
-    "feed": "^4.0.0",
+    "dayjs": "^1.10.7",
+    "feed": "^4.2.2",
     "gatsby": "^4.0.2",
     "react": "^16.9.0"
   },
