@@ -36,7 +36,7 @@
     "url": "https://github.com/florianeckerstorfer/gatsby-plugin-advanced-feed.git"
   },
   "engines": {
-    "node": ">=14.0.0,<17.0.0"
+    "node": ">=14.0.0 <17.0.0"
   },
   "dependencies": {
     "@babel/runtime": "^7.16.0",
