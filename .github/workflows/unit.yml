@@ -17,7 +17,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Install dependencies
-        run: npm install
+        run: |
+          npm install
+          npm install gatsby@4
       - name: Run tests
         run: npm test
         env:
