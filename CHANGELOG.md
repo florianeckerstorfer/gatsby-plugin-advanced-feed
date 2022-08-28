@@ -1,5 +1,11 @@
 # Change log
 
+## Version 3.0.1 (28 August 2022)
+
+- [#161](https://github.com/florianeckerstorfer/gatsby-plugin-advanced-feed/pull/161) Fix engines.node (by [gretchenfitze](https://github.com/gretchenfitze))
+- [#163](https://github.com/florianeckerstorfer/gatsby-plugin-advanced-feed/pull/163) Update dependencies and move dependencies into devDependencies or peerDependencies (by [florianeckerstorfer](https://github.com/florianeckerstorfer))
+- [#164](https://github.com/florianeckerstorfer/gatsby-plugin-advanced-feed/pull/164) CI: Run unit and integration tests also with Node 18.x (by [florianeckerstorfer](https://github.com/florianeckerstorfer))
+
 ## Version 3.0.0 (1 November 2021)
 
 - Update to Gatsby v4
