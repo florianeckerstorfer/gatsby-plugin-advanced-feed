@@ -1,6 +1,6 @@
 {
   "name": "@fec/gatsby-plugin-advanced-feed",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Gatsby plugin that generates RSS 2, Atom and JSON feeds for your site.",
   "author": "Florian Eckerstorfer <florian@eckerstorfer.net>",
   "main": "index.js",
