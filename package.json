@@ -47,7 +47,7 @@
     "@babel/cli": "^7.16.0",
     "@babel/core": "^7.16.0",
     "babel-eslint": "^10.0.2",
-    "babel-preset-gatsby-package": "^2.0.0",
+    "babel-preset-gatsby-package": "^3.5.0",
     "cross-env": "^7.0.3",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
