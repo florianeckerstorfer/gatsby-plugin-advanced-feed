@@ -56,12 +56,18 @@ describe('onRenderBody', () => {
     onRenderBody({ pathname: '', setHeadComponents }, { feeds: [{ output }] });
 
     const links = setHeadComponents.mock.calls[0][0];
-    expect(render(links[0]).container.querySelector('link'))
-      .toHaveAttribute('href', '/my-rss.xml');
-    expect(render(links[1]).container.querySelector('link'))
-      .toHaveAttribute('href', '/my-atom.xml');
-    expect(render(links[2]).container.querySelector('link'))
-      .toHaveAttribute('href', '/my-feed.json');
+    expect(render(links[0]).container.querySelector('link')).toHaveAttribute(
+      'href',
+      '/my-rss.xml'
+    );
+    expect(render(links[1]).container.querySelector('link')).toHaveAttribute(
+      'href',
+      '/my-atom.xml'
+    );
+    expect(render(links[2]).container.querySelector('link')).toHaveAttribute(
+      'href',
+      '/my-feed.json'
+    );
   });
 
   it('should not prepend slash if pluginOptions.feeds[].output already contains slash', () => {
@@ -69,12 +75,18 @@ describe('onRenderBody', () => {
     onRenderBody({ pathname: '', setHeadComponents }, { feeds: [{ output }] });
 
     const links = setHeadComponents.mock.calls[0][0];
-    expect(render(links[0]).container.querySelector('link'))
-      .toHaveAttribute('href', '/rss.xml');
-    expect(render(links[1]).container.querySelector('link'))
-      .toHaveAttribute('href', '/atom.xml');
-    expect(render(links[2]).container.querySelector('link'))
-      .toHaveAttribute('href', '/feed.json');
+    expect(render(links[0]).container.querySelector('link')).toHaveAttribute(
+      'href',
+      '/rss.xml'
+    );
+    expect(render(links[1]).container.querySelector('link')).toHaveAttribute(
+      'href',
+      '/atom.xml'
+    );
+    expect(render(links[2]).container.querySelector('link')).toHaveAttribute(
+      'href',
+      '/feed.json'
+    );
   });
 
   it('should not render links in head if `createLinkInHead` is `false`', () => {

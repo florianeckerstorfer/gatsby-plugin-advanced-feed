@@ -100,7 +100,9 @@ describe('onPostBuild()', () => {
       expect(feedMock.mock.calls[0][0].feedLinks.json).toBe(
         `${siteMetadata.siteUrl}/feed.json`
       );
-      expect(feedMock.mock.calls[0][0].author.name).toBe(siteMetadata.author.name);
+      expect(feedMock.mock.calls[0][0].author.name).toBe(
+        siteMetadata.author.name
+      );
       expect(feedMock.mock.calls[0][0].author.link).toBe(siteMetadata.siteUrl);
       // By default, email address should be undefined
       // This ensures that authors don't accidentally publish their
