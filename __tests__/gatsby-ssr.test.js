@@ -1,5 +1,6 @@
 import { onRenderBody } from '../src/gatsby-ssr';
-import { shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
 
 beforeAll(() => {
   global.__PATH_PREFIX__ = '';
@@ -26,16 +27,16 @@ describe('onRenderBody', () => {
     const links = setHeadComponents.mock.calls[0][0];
     expect(links.length).toBe(3);
 
-    const rssLink = shallow(links[0]);
-    const atomLink = shallow(links[1]);
-    const jsonLink = shallow(links[2]);
+    const rssLink = render(links[0]).container.querySelector('link');
+    const atomLink = render(links[1]).container.querySelector('link');
+    const jsonLink = render(links[2]).container.querySelector('link');
 
-    expect(rssLink.prop('href')).toBe('/rss.xml');
-    expect(rssLink.prop('type')).toBe('application/rss+xml');
-    expect(atomLink.prop('href')).toBe('/atom.xml');
-    expect(atomLink.prop('type')).toBe('application/atom+xml');
-    expect(jsonLink.prop('href')).toBe('/feed.json');
-    expect(jsonLink.prop('type')).toBe('application/json');
+    expect(rssLink).toHaveAttribute('href', '/rss.xml');
+    expect(rssLink).toHaveAttribute('type', 'application/rss+xml');
+    expect(atomLink).toHaveAttribute('href', '/atom.xml');
+    expect(atomLink).toHaveAttribute('type', 'application/atom+xml');
+    expect(jsonLink).toHaveAttribute('href', '/feed.json');
+    expect(jsonLink).toHaveAttribute('type', 'application/json');
   });
 
   it('should render links in head if pluginOptions.feeds is array', () => {
@@ -55,9 +56,12 @@ describe('onRenderBody', () => {
     onRenderBody({ pathname: '', setHeadComponents }, { feeds: [{ output }] });
 
     const links = setHeadComponents.mock.calls[0][0];
-    expect(shallow(links[0]).prop('href')).toBe('/my-rss.xml');
-    expect(shallow(links[1]).prop('href')).toBe('/my-atom.xml');
-    expect(shallow(links[2]).prop('href')).toBe('/my-feed.json');
+    expect(render(links[0]).container.querySelector('link'))
+      .toHaveAttribute('href', '/my-rss.xml');
+    expect(render(links[1]).container.querySelector('link'))
+      .toHaveAttribute('href', '/my-atom.xml');
+    expect(render(links[2]).container.querySelector('link'))
+      .toHaveAttribute('href', '/my-feed.json');
   });
 
   it('should not prepend slash if pluginOptions.feeds[].output already contains slash', () => {
@@ -65,9 +69,12 @@ describe('onRenderBody', () => {
     onRenderBody({ pathname: '', setHeadComponents }, { feeds: [{ output }] });
 
     const links = setHeadComponents.mock.calls[0][0];
-    expect(shallow(links[0]).prop('href')).toBe('/rss.xml');
-    expect(shallow(links[1]).prop('href')).toBe('/atom.xml');
-    expect(shallow(links[2]).prop('href')).toBe('/feed.json');
+    expect(render(links[0]).container.querySelector('link'))
+      .toHaveAttribute('href', '/rss.xml');
+    expect(render(links[1]).container.querySelector('link'))
+      .toHaveAttribute('href', '/atom.xml');
+    expect(render(links[2]).container.querySelector('link'))
+      .toHaveAttribute('href', '/feed.json');
   });
 
   it('should not render links in head if `createLinkInHead` is `false`', () => {
