@@ -8,7 +8,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x, 15.x, 16.x, 18.x]
+        node-version: [18.x, 20.x]
 
     steps:
       - uses: actions/checkout@v1
@@ -19,7 +19,7 @@ jobs:
       - name: Install dependencies
         run: |
           npm install
-          npm install gatsby@4
+          npm install gatsby@5
       - name: Run tests
         run: npm test
         env:
